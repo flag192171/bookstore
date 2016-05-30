@@ -9,6 +9,7 @@
 #include "good.hpp"
 #include <string>
 #include <cstdio>
+//book类的构造函数
 book::book (string _name, string _barcode, string _author,string _isbn, float _price, int _num ) {
     name = _name;
     barcode = _barcode;
@@ -17,6 +18,7 @@ book::book (string _name, string _barcode, string _author,string _isbn, float _p
     num = _num;
     ISBN = _isbn;
 }
+//magizine类的构造函数
 magizine::magizine (string _name, string _barcode, string _ISSN, string _frequecy, int _issue, float _price, int _num) {
     name = _name;
     price = _price;
@@ -26,6 +28,7 @@ magizine::magizine (string _name, string _barcode, string _ISSN, string _frequec
     frequency = _frequecy;
     ISSN = _ISSN;
 }
+//cd类的构造函数
 CD::CD (string _name, string _barcode, string _style, int _length, float _price, int _num) {
     name = _name;
     price = _price;
@@ -34,6 +37,7 @@ CD::CD (string _name, string _barcode, string _style, int _length, float _price,
     style = _style;
     length = _length;
 }
+//VCD类的构造函数
 VCD::VCD (string _name, string _barcode, int _length, float _price, int _num) {
     name = _name;
     price = _price;
@@ -41,6 +45,7 @@ VCD::VCD (string _name, string _barcode, int _length, float _price, int _num) {
     num = _num;
     length = _length;
 }
+//dvd类的构造函数
 DVD::DVD (string _name, string _barcode, int _length, float _price, int _num) {
     name = _name;
     barcode = _barcode;
@@ -48,7 +53,7 @@ DVD::DVD (string _name, string _barcode, int _length, float _price, int _num) {
     num = _num;
     length = _length;
 }
-
+//background类的构造函数，初始化商品列表
 Background::Background() {
     book_list.push_back(book("cpp", "001", "lzc001","001", 23.3, 0));
     book_list.push_back(book("c", "002", "lzc002","002", 23.4, 0));
@@ -67,7 +72,8 @@ Background::Background() {
     dvd_list.push_back(DVD("matlab", "015", 1005, 55, 0));
 
 }
-
+//用于向background类的数据成员中添加商品数量
+//接受两个参数，第一个是商品条形码，第二个是商品数量
 bool Background::add_good(string _barcode, int _num) {
     for(auto &c :book_list) {
         if (c.get_barcode() == _barcode) {
@@ -103,6 +109,8 @@ bool Background::add_good(string _barcode, int _num) {
 
     return false;
 }
+
+//用于格式化输出已添加的商品信息
 void Background::print_list() {
     printf("\ntypename: book\n");
     for(auto c :book_list) {
@@ -164,6 +172,7 @@ void Background::print_list() {
         }
     }
 }
+//用于计算商品的总价格
 double Background::total() {
     double sum = 0;
     for(auto c : book_list) {
@@ -183,6 +192,7 @@ double Background::total() {
     }
     return sum;
 }
+//格式化输出商品总价格
 void Background::print_sum() {
     for(int i = 0; i < 40; i++) {
         printf("*");
